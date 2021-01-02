@@ -1,6 +1,5 @@
-from platform import platform
 from selenium import webdriver
-import time
+import time, platform
 from tkinter import *
 
 # Specifies the path to the chrome driver and makes "driver" the browser variable
@@ -67,7 +66,7 @@ def SendEmail():
     msg['To'] = rec_email
     msg['Subject'] = h3_title_list[0]
 
-    html = "<h1>"+str(h3_title_list[0])+"</h1>"
+    html = "<h1>"+str(h3_title_list[0])+"</h1><br><img src='http://jackgreen.ch/bvb_automation/bvb.png' style='background: black;'></img><br>view the sourcecode on github<a href='https://github.com/jasekk99/BVB-Verkehrsinformation-Automation'><img src='http://jackgreen.ch/bvb_automation/github.png' style='width: 30px;'></img></a>"
     msg.attach(MIMEText(html, 'html'))
 
 
@@ -83,3 +82,6 @@ def SendEmail():
 SendEmail()
 time.sleep(2)
 driver.quit()
+
+#three hour sleep then loop again
+time.sleep(10800)
