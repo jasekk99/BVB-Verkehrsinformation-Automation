@@ -1,6 +1,7 @@
 from platform import platform
 from selenium import webdriver
-import time, os
+import time
+from tkinter import *
 
 # Specifies the path to the chrome driver and makes "driver" the browser variable
 if platform.system() == 'Darwin':
@@ -46,37 +47,39 @@ for element in elements:
     time.sleep(2)
     
 # EMAIL SEND
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-import smtplib
-#from Tkinter import *
-sender_email_input = input(str("Enter the email you would like to send FROM: "))
-sender_email = sender_email_input
+def SendEmail():
+    from email.mime.multipart import MIMEMultipart
+    from email.mime.text import MIMEText
+    import smtplib
+    #from Tkinter import *
+    sender_email_input = input(str("Enter the email you would like to send FROM: "))
+    sender_email = sender_email_input
 
-rec_email_input = input(str("Enter the email you would like to send TO: "))
-rec_email = rec_email_input
-# Password input GUI to go here
+    rec_email_input = input(str("Enter the email you would like to send TO: "))
+    rec_email = rec_email_input
+    # Password input GUI to go here
 
-password = input(str("Please enter your password: "))
-    
-msg = MIMEMultipart()
+    password = input(str("Please enter your password: "))
+        
+    msg = MIMEMultipart()
 
-msg['From'] = sender_email
-msg['To'] = rec_email
-msg['Subject'] = h3_title_list[0]
+    msg['From'] = sender_email
+    msg['To'] = rec_email
+    msg['Subject'] = h3_title_list[0]
 
-html = "<h1>"+str(h3_title_list[0])+"</h1>"
-msg.attach(MIMEText(html, 'html'))
+    html = "<h1>"+str(h3_title_list[0])+"</h1>"
+    msg.attach(MIMEText(html, 'html'))
 
 
-server = smtplib.SMTP('smtp.gmail.com', 587)
-server.starttls()
-server.login(sender_email, password)
-text = msg.as_string()
-print("Login success")
-server.sendmail(sender_email, rec_email, text)
-print("Email sent to", rec_email)
-server.quit()
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(sender_email, password)
+    text = msg.as_string()
+    print("Login success")
+    server.sendmail(sender_email, rec_email, text)
+    print("Email sent to", rec_email)
+    server.quit()
 
+SendEmail()
 time.sleep(2)
 driver.quit()
