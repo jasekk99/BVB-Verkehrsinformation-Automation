@@ -82,6 +82,3 @@ def SendEmail():
 SendEmail()
 time.sleep(2)
 driver.quit()
-
-#three hour sleep then loop again
-time.sleep(10800)
