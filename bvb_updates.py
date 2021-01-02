@@ -1,8 +1,12 @@
+from platform import platform
 from selenium import webdriver
-import time
+import time, os
 
 # Specifies the path to the chrome driver and makes "driver" the browser variable
-PATH = "/Library/Application Support/chromedriver"
+if platform.system() == 'Darwin':
+    PATH = "/Library/Application Support/chromedriver"
+if platform.system() == 'Windows':
+    PATH = "C:/chromedriver"
 driver = webdriver.Chrome(PATH)
 
 # Defines BVB website URL
