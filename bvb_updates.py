@@ -46,9 +46,11 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
 #from Tkinter import *
+sender_email_input = input(str("Enter the email you would like to send FROM: "))
+sender_email = sender_email_input
 
-sender_email = "jackgreendevacc@gmail.com"
-rec_email = "jasekk99@gmail.com"
+rec_email_input = input(str("Enter the email you would like to send TO: "))
+rec_email = rec_email_input
 # Password input GUI to go here
 
 password = input(str("Please enter your password: "))
