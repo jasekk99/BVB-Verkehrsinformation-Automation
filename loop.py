@@ -1,6 +1,7 @@
 import time
+from colorama import init, Fore, Back
 while True:
-    loopQuestion = input("run again? [Y/N]: ")
+    loopQuestion = input(f"{Fore.BLACK+Back.WHITE}run again? [Y/N]: {Fore.RESET+Back.RESET}")
     if loopQuestion == "Y":
         print("OK! Running the Application")
         import bvb_updates
