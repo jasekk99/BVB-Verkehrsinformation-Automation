@@ -7,13 +7,13 @@ from colorama import init, Fore, Back
 if platform.system() == 'Darwin':
     PATH = "/Library/Application Support/chromedriver"
     path_confirm = input(Back.YELLOW+Fore.BLACK+"is this the correct directory of your chromedriver?: '"+PATH+"'\n[Y/N]"+Back.BLACK+Fore.WHITE)
-    if path_confirm == "N" or path_confirm == "n":
+    if path_confirm == "N" or path_confirm == "n" or path_confirm == "no":
         print("PLEASE CHANGE THE DIRECTORY AND RUN THE PROGRAM AGAIN!")
         exit()
 if platform.system() == 'Windows':
-    PATH = "C:\Program Files\chromedriver.exe"
+    PATH = "C:\Program Files\chromedriver"
     path_confirm = input(Back.YELLOW+Fore.BLACK+"is this the correct directory of your chromedriver?: '"+PATH+"'\n[Y/N]"+Back.BLACK+Fore.WHITE)
-    if path_confirm == "N" or path_confirm == "n":
+    if path_confirm == "N" or path_confirm == "n" or path_confirm == "no":
         print("PLEASE CHANGE THE DIRECTORY AND RUN THE PROGRAM AGAIN!")
         exit()
 driver = webdriver.Chrome(PATH)
