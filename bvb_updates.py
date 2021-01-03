@@ -1,12 +1,21 @@
 from selenium import webdriver
 import time, platform
 from tkinter import *
+from colorama import init, Fore, Back
 
 # Specifies the path to the chrome driver and makes "driver" the browser variable
 if platform.system() == 'Darwin':
     PATH = "/Library/Application Support/chromedriver"
+    path_confirm = input(Back.YELLOW+Fore.BLACK+"is this the correct directory of your chromedriver?: '"+PATH+"'\n[Y/N]"+Back.BLACK+Fore.WHITE)
+    if path_confirm == "N" or path_confirm == "n":
+        print("PLEASE CHANGE THE DIRECTORY AND RUN THE PROGRAM AGAIN!")
+        exit()
 if platform.system() == 'Windows':
-    PATH = "C:/chromedriver"
+    PATH = "C:\Program Files\chromedriver.exe"
+    path_confirm = input(Back.YELLOW+Fore.BLACK+"is this the correct directory of your chromedriver?: '"+PATH+"'\n[Y/N]"+Back.BLACK+Fore.WHITE)
+    if path_confirm == "N" or path_confirm == "n":
+        print("PLEASE CHANGE THE DIRECTORY AND RUN THE PROGRAM AGAIN!")
+        exit()
 driver = webdriver.Chrome(PATH)
 
 # Defines BVB website URL
@@ -51,10 +60,10 @@ def SendEmail():
     from email.mime.text import MIMEText
     import smtplib
     #from Tkinter import *
-    sender_email_input = input(str("Enter the email you would like to send FROM: "))
+    sender_email_input = input(str(Fore.GREEN+"Enter the email you would like to send FROM: "+Fore.WHITE))
     sender_email = sender_email_input
 
-    rec_email_input = input(str("Enter the email you would like to send TO: "))
+    rec_email_input = input(str(Fore.GREEN+"Enter the email you would like to send TO: "+Fore.WHITE))
     rec_email = rec_email_input
     # Password input GUI to go here
 
