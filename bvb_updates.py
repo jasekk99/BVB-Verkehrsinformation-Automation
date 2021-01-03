@@ -2,6 +2,8 @@ from selenium import webdriver
 import time, platform
 from tkinter import *
 from colorama import init, Fore, Back
+#Copyright
+print(f"{Fore.GREEN}©Jack Green 2020{Fore.RESET}")
 
 def EXITING_text():
     print(f"{Back.RED+Fore.WHITE}EXITING{Back.RESET+Fore.RESET}")
