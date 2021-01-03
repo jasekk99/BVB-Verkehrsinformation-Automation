@@ -6,13 +6,13 @@ from colorama import init, Fore, Back
 # Specifies the path to the chrome driver and makes "driver" the browser variable
 if platform.system() == 'Darwin':
     PATH = "/Library/Application Support/chromedriver"
-    path_confirm = input(Back.YELLOW+Fore.BLACK+"is this the correct directory of your chromedriver?: '"+PATH+"'\n[Y/N]"+Back.BLACK+Fore.WHITE)
+    path_confirm = input(f"{Back.YELLOW+Fore.BLACK}is this the correct directory of your chromedriver?: '{PATH}'\n[Y/N]{Back.BLACK+Fore.WHITE}")
     if path_confirm == "N" or path_confirm == "n" or path_confirm == "no":
         print("PLEASE CHANGE THE DIRECTORY AND RUN THE PROGRAM AGAIN!")
         exit()
 if platform.system() == 'Windows':
     PATH = "C:\Program Files\chromedriver"
-    path_confirm = input(Back.YELLOW+Fore.BLACK+"is this the correct directory of your chromedriver?: '"+PATH+"'\n[Y/N]"+Back.BLACK+Fore.WHITE)
+    path_confirm = input(f"{Back.YELLOW+Fore.BLACK}is this the correct directory of your chromedriver?: '{PATH}'\n[Y/N]{Back.BLACK+Fore.WHITE}")
     if path_confirm == "N" or path_confirm == "n" or path_confirm == "no":
         print("PLEASE CHANGE THE DIRECTORY AND RUN THE PROGRAM AGAIN!")
         exit()
@@ -60,10 +60,10 @@ def SendEmail():
     from email.mime.text import MIMEText
     import smtplib
     #from Tkinter import *
-    sender_email_input = input(str(Fore.GREEN+"Enter the email you would like to send FROM: "+Fore.WHITE))
+    sender_email_input = input(str(f"{Fore.GREEN}Enter the email you would like to send FROM: {Fore.WHITE}"))
     sender_email = sender_email_input
 
-    rec_email_input = input(str(Fore.GREEN+"Enter the email you would like to send TO: "+Fore.WHITE))
+    rec_email_input = input(str(f"{Fore.GREEN}Enter the email you would like to send TO: {Fore.WHITE}"))
     rec_email = rec_email_input
     # Password input GUI to go here
 
@@ -75,7 +75,7 @@ def SendEmail():
     msg['To'] = rec_email
     msg['Subject'] = h3_title_list[0]
 
-    html = "<h1>"+str(h3_title_list[0])+"</h1><br><img src='http://jackgreen.ch/bvb_automation/bvb.png' style='background: black;'></img><br>view the sourcecode on github<a href='https://github.com/jasekk99/BVB-Verkehrsinformation-Automation'><img src='http://jackgreen.ch/bvb_automation/github.png' style='width: 30px;'></img></a>"
+    html = f"<h1>{str(h3_title_list[0])}</h1><br><img src='http://jackgreen.ch/bvb_automation/bvb.png' style='background: black;'></img><br>view the sourcecode on github<a href='https://github.com/jasekk99/BVB-Verkehrsinformation-Automation'><img src='http://jackgreen.ch/bvb_automation/github.png' style='width: 30px;'></img></a>"
     msg.attach(MIMEText(html, 'html'))
 
 
