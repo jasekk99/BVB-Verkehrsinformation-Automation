@@ -4,25 +4,23 @@ from tkinter import *
 from colorama import init, Fore, Back
 
 # Specifies the path to the chrome driver and makes "driver" the browser variable
+def DirectoryNo():
+    print(f"{Back.RED+Fore.WHITE}PLEASE CHANGE THE DIRECTORY AND RUN THE PROGRAM AGAIN!{Back.RESET}")
+    exit()
 if platform.system() == 'Darwin':
     PATH = "/Library/Application Support/chromedriver"
-    path_confirm = input(f"{Back.YELLOW+Fore.BLACK}is this the correct directory of your chromedriver?: '{PATH}'\n[Y/N]{Back.BLACK+Fore.WHITE}")
+    path_confirm = input(f"{Fore.YELLOW}is this the correct directory of your chromedriver?: '{PATH}'\n[Y/N]{Fore.RESET}")
     if path_confirm == "N" or path_confirm == "n" or path_confirm == "no":
-        print("PLEASE CHANGE THE DIRECTORY AND RUN THE PROGRAM AGAIN!")
-        exit()
+        DirectoryNo()
 if platform.system() == 'Windows':
     PATH = "C:\Program Files\chromedriver"
-    path_confirm = input(f"{Back.YELLOW+Fore.BLACK}is this the correct directory of your chromedriver?: '{PATH}'\n[Y/N]{Back.BLACK+Fore.WHITE}")
+    path_confirm = input(f"{Fore.YELLOW}is this the correct directory of your chromedriver?: '{PATH}'\n[Y/N]{Fore.RESET}")
     if path_confirm == "N" or path_confirm == "n" or path_confirm == "no":
-        print("PLEASE CHANGE THE DIRECTORY AND RUN THE PROGRAM AGAIN!")
-        exit()
+        DirectoryNo()
 driver = webdriver.Chrome(PATH)
 
 # Defines BVB website URL
 driver.get("https://www.bvb.ch/de/aktuelle-informationen/verkehrsinformationen/")
-time.sleep(0.5)
-# Print title of website
-print(driver.title)
 time.sleep(2)
 # find all elememts of "a" (anchor tag) within the div with an id of "content"
 elements = driver.find_elements_by_css_selector("div#content a")
@@ -53,6 +51,14 @@ for element in elements:
     # increment
     tab+=1
     time.sleep(2)
+
+# Check if there are elements if not gives error and exits
+try:
+    print(h3_title_list[0])
+except IndexError:
+    print(f"{Back.YELLOW+Fore.BLACK}NO NEW UPDATES WERE FOUND{Back.RESET+Fore.RESET}")
+    print(f"{Back.RED+Fore.WHITE}EXITING{Back.RESET+Fore.RESET}")
+    exit()
     
 # EMAIL SEND
 def SendEmail():
@@ -60,10 +66,10 @@ def SendEmail():
     from email.mime.text import MIMEText
     import smtplib
     #from Tkinter import *
-    sender_email_input = input(str(f"{Fore.GREEN}Enter the email you would like to send FROM: {Fore.WHITE}"))
+    sender_email_input = input(str(f"{Fore.GREEN}Enter the email you would like to send FROM: {Fore.RESET}"))
     sender_email = sender_email_input
 
-    rec_email_input = input(str(f"{Fore.GREEN}Enter the email you would like to send TO: {Fore.WHITE}"))
+    rec_email_input = input(str(f"{Fore.GREEN}Enter the email you would like to send TO: {Fore.RESET}"))
     rec_email = rec_email_input
     # Password input GUI to go here
 
@@ -74,6 +80,7 @@ def SendEmail():
     msg['From'] = sender_email
     msg['To'] = rec_email
     msg['Subject'] = h3_title_list[0]
+    
 
     html = f"<h1>{str(h3_title_list[0])}</h1><br><img src='http://jackgreen.ch/bvb_automation/bvb.png' style='background: black;'></img><br>view the sourcecode on github<a href='https://github.com/jasekk99/BVB-Verkehrsinformation-Automation'><img src='http://jackgreen.ch/bvb_automation/github.png' style='width: 30px;'></img></a>"
     msg.attach(MIMEText(html, 'html'))
