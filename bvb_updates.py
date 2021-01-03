@@ -3,17 +3,24 @@ import time, platform
 from tkinter import *
 from colorama import init, Fore, Back
 
+def EXITING_text():
+    print(f"{Back.RED+Fore.WHITE}EXITING{Back.RESET+Fore.RESET}")
 # Specifies the path to the chrome driver and makes "driver" the browser variable
 def DirectoryNo():
-    print(f"{Back.RED+Fore.WHITE}PLEASE CHANGE THE DIRECTORY AND RUN THE PROGRAM AGAIN!{Back.RESET}")
+    print(f"{Back.RED+Fore.WHITE}PLEASE CHANGE THE DIRECTORY AND RUN THE PROGRAM AGAIN!")
+    EXITING_text()
     exit()
+#MACOS
 if platform.system() == 'Darwin':
     PATH = "/Library/Application Support/chromedriver"
+    print(f"OS: {Back.WHITE+Fore.BLACK}MacOS{Back.RESET+Fore.RESET}")
     path_confirm = input(f"{Fore.YELLOW}is this the correct directory of your chromedriver?: '{PATH}'\n[Y/N]{Fore.RESET}")
     if path_confirm == "N" or path_confirm == "n" or path_confirm == "no":
         DirectoryNo()
+#WINDOWS
 if platform.system() == 'Windows':
     PATH = "C:\Program Files\chromedriver"
+    print(f"OS: {Back.BLUE+Fore.WHITE}WINDOWS{Back.RESET+Fore.RESET}")
     path_confirm = input(f"{Fore.YELLOW}is this the correct directory of your chromedriver?: '{PATH}'\n[Y/N]{Fore.RESET}")
     if path_confirm == "N" or path_confirm == "n" or path_confirm == "no":
         DirectoryNo()
@@ -57,7 +64,8 @@ try:
     print(h3_title_list[0])
 except IndexError:
     print(f"{Back.YELLOW+Fore.BLACK}NO NEW UPDATES WERE FOUND{Back.RESET+Fore.RESET}")
-    print(f"{Back.RED+Fore.WHITE}EXITING{Back.RESET+Fore.RESET}")
+    EXITING_text()
+    driver.quit()
     exit()
     
 # EMAIL SEND
