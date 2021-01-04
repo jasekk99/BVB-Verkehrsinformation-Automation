@@ -4,8 +4,8 @@ from tkinter import *
 from colorama import init, Fore, Back
 #Copyright
 print(f"{Fore.GREEN}©Jack Green 2020{Fore.RESET}")
-EXITING_text = print(f"{Back.RED+Fore.WHITE}EXITING{Back.RESET+Fore.RESET}")
-NO_NEW_UPDATES_text = print(f"{Back.YELLOW+Fore.BLACK}NO NEW UPDATES WERE FOUND{Back.RESET+Fore.RESET}")
+EXITING_text = f"{Back.RED+Fore.WHITE}EXITING{Back.RESET+Fore.RESET}"
+NO_NEW_UPDATES_text = f"{Back.YELLOW+Fore.BLACK}NO NEW UPDATES WERE FOUND{Back.RESET+Fore.RESET}"
 # Specifies the path to the chrome driver and makes "driver" the browser variable
 
 def DirectoryNo():
