@@ -4,15 +4,13 @@ from tkinter import *
 from colorama import init, Fore, Back
 #Copyright
 print(f"{Fore.GREEN}©Jack Green 2020{Fore.RESET}")
-
-def EXITING_text():
-    print(f"{Back.RED+Fore.WHITE}EXITING{Back.RESET+Fore.RESET}")
+EXITING_text = print(f"{Back.RED+Fore.WHITE}EXITING{Back.RESET+Fore.RESET}")
+NO_NEW_UPDATES_text = print(f"{Back.YELLOW+Fore.BLACK}NO NEW UPDATES WERE FOUND{Back.RESET+Fore.RESET}")
 # Specifies the path to the chrome driver and makes "driver" the browser variable
-def NO_NEW_UPDATES_text():
-    print(f"{Back.YELLOW+Fore.BLACK}NO NEW UPDATES WERE FOUND{Back.RESET+Fore.RESET}")
+
 def DirectoryNo():
     print(f"{Back.RED+Fore.WHITE}PLEASE CHANGE THE DIRECTORY AND RUN THE PROGRAM AGAIN!")
-    EXITING_text()
+    print(EXITING_text)
     exit()
 #MACOS
 if platform.system() == 'Darwin':
@@ -67,8 +65,8 @@ for element in elements:
 try:
     print(h3_title_list[0])
 except IndexError:
-    NO_NEW_UPDATES_text()
-    EXITING_text()
+    print(NO_NEW_UPDATES_text)
+    print(EXITING_text)
     driver.quit()
     quit()
     
