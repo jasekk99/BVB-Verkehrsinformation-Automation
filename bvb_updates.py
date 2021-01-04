@@ -21,7 +21,7 @@ if platform.system() == 'Darwin':
         DirectoryNo()
 #WINDOWS
 if platform.system() == 'Windows':
-    PATH = "C:\Program Files\chromedriver"
+    PATH = "C:\chromedriver.exe"
     print(f"OS: {Back.BLUE+Fore.WHITE}WINDOWS{Back.RESET+Fore.RESET}")
     path_confirm = input(f"{Fore.YELLOW}is this the correct directory of your chromedriver?: '{PATH}'\n[Y/N]{Fore.RESET}")
     if path_confirm == "N" or path_confirm == "n" or path_confirm == "no":
