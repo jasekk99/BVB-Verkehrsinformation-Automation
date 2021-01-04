@@ -11,4 +11,6 @@ while True:
     if loopQuestion == "N" or loopQuestion == "n" or loopQuestion == "no":
         print("OK! Exiting loop")
         break
+    if loopQuestion == "":
+        break
     break
