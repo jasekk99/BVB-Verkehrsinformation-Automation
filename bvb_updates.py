@@ -2,6 +2,8 @@ from selenium import webdriver
 import time, platform
 from tkinter import *
 from colorama import init, Fore, Back
+from selenium.webdriver.chrome.options import Options
+
 #Copyright
 print(f"{Fore.GREEN}©Jack Green 2020{Fore.RESET}")
 EXITING_text = f"{Back.RED+Fore.WHITE}EXITING{Back.RESET+Fore.RESET}"
@@ -26,7 +28,16 @@ if platform.system() == 'Windows':
     path_confirm = input(f"{Fore.YELLOW}is this the correct directory of your chromedriver?: '{PATH}'\n[Y/N]{Fore.RESET}")
     if path_confirm == "N" or path_confirm == "n" or path_confirm == "no":
         DirectoryNo()
-driver = webdriver.Chrome(PATH)
+# hides the browser windows
+CHROME_PATH = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
+WINDOW_SIZE = "1920,1080"
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
+chrome_options.binary_location = CHROME_PATH
+
+driver = webdriver.Chrome(executable_path=PATH,
+                        chrome_options=chrome_options)
 
 # Defines BVB website URL
 driver.get("https://www.bvb.ch/de/aktuelle-informationen/verkehrsinformationen/")
