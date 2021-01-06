@@ -3,3 +3,4 @@ todo.md
 bvb.html
 __pycache__/bvb_updates.cpython-39.pyc
 *.pyc
+*.log
